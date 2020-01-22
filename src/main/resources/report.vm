@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report</title>
+</head>
+<body>
+<h1>Report Type: $type</h1>
+<ul>
+    #foreach( $product in $products )
+        <li>Product Name: $product.getName()</li>
+        <ul>
+            #foreach( $element in $product.getElements() )
+                <li>Element ID: $element.getId()</li>
+            #end
+        </ul>
+    #end
+</ul>
+</body>
+</html>
