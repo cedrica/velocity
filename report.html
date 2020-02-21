@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report</title>
+
+    <script>
+        var products = [{"id":"8524fa1e-af3f-4a62-94a7-94b6871731a3","name":"ProductA","type":"big","date":{"date":{"year":2020,"month":1,"day":30},"time":{"hour":13,"minute":10,"second":1,"nano":529000000}},"elements":[{"id":"a1e327f5-439b-4aff-ab90-d8153cb6c2a9","message":"foo"},{"id":"6b8025b5-6db3-4154-bb7f-a077aabc6614","message":"foo"},{"id":"6574bc3a-f65c-4d47-9cc6-21cb4b4bfd25","message":"foo"}]},{"id":"9ba3c154-b8d8-4eec-b1ec-918ac2819024","name":"ProductB","type":"medium","date":{"date":{"year":2020,"month":2,"day":6},"time":{"hour":13,"minute":10,"second":1,"nano":535000000}},"elements":[{"id":"aed226e7-9ad5-49e2-8927-b300eb311838","message":"foo"},{"id":"69772c5c-f486-47fe-8bbd-90e8a3b81dab","message":"foo"},{"id":"e4b03bbc-845c-475c-a1ba-8412a1eca240","message":"foo"}]},{"id":"4d80aae7-3be0-45e1-8066-540336c7b31a","name":"ProductC","type":"small","date":{"date":{"year":2020,"month":2,"day":13},"time":{"hour":13,"minute":10,"second":1,"nano":535000000}},"elements":[{"id":"c7ad30cb-f610-4af2-9ecb-959c430d9a5b","message":"foo"},{"id":"7ee40dd0-0382-49f3-a784-dab837375e50","message":"foo"},{"id":"54fceb37-e150-4d7d-8df7-883d12d6e346","message":"foo"}]}];
+
+        function sort(column) {
+            products.sort((a, b) => {
+                return a[column].localeCompare(b[column]);
+            });
+        }
+    </script>
+    <style>
+        .report {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .head {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .props {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<h1>Report Type: ReqIF</h1>
+<pre>[{"id":"8524fa1e-af3f-4a62-94a7-94b6871731a3","name":"ProductA","type":"big","date":{"date":{"year":2020,"month":1,"day":30},"time":{"hour":13,"minute":10,"second":1,"nano":529000000}},"elements":[{"id":"a1e327f5-439b-4aff-ab90-d8153cb6c2a9","message":"foo"},{"id":"6b8025b5-6db3-4154-bb7f-a077aabc6614","message":"foo"},{"id":"6574bc3a-f65c-4d47-9cc6-21cb4b4bfd25","message":"foo"}]},{"id":"9ba3c154-b8d8-4eec-b1ec-918ac2819024","name":"ProductB","type":"medium","date":{"date":{"year":2020,"month":2,"day":6},"time":{"hour":13,"minute":10,"second":1,"nano":535000000}},"elements":[{"id":"aed226e7-9ad5-49e2-8927-b300eb311838","message":"foo"},{"id":"69772c5c-f486-47fe-8bbd-90e8a3b81dab","message":"foo"},{"id":"e4b03bbc-845c-475c-a1ba-8412a1eca240","message":"foo"}]},{"id":"4d80aae7-3be0-45e1-8066-540336c7b31a","name":"ProductC","type":"small","date":{"date":{"year":2020,"month":2,"day":13},"time":{"hour":13,"minute":10,"second":1,"nano":535000000}},"elements":[{"id":"c7ad30cb-f610-4af2-9ecb-959c430d9a5b","message":"foo"},{"id":"7ee40dd0-0382-49f3-a784-dab837375e50","message":"foo"},{"id":"54fceb37-e150-4d7d-8df7-883d12d6e346","message":"foo"}]}]</pre>
+
+<div class="report">
+    <div class="head">
+        <div onclick="sort('name')">Name</div>
+        <div onclick="sort('type')">Type</div>
+        <div onclick="sort('date')">Date</div>
+    </div>
+    <div class="body">
+                    <div class="product" data-id="8524fa1e-af3f-4a62-94a7-94b6871731a3">
+                <div class="props">
+                    <div data-binding="name">ProductA</div>
+                    <div data-binding="type">big</div>
+                    <div data-binding="date">2020-01-30T13:10:01.529</div>
+                </div>
+                <div class="details">
+                    <div class="head">
+                        <div onclick="sort('message')">Message</div>
+                    </div>
+                    <div class="body">
+                                                <div data-id="a1e327f5-439b-4aff-ab90-d8153cb6c2a9">foo</div>
+                                                <div data-id="6b8025b5-6db3-4154-bb7f-a077aabc6614">foo</div>
+                                                <div data-id="6574bc3a-f65c-4d47-9cc6-21cb4b4bfd25">foo</div>
+                                            </div>
+                </div>
+            </div>
+                    <div class="product" data-id="9ba3c154-b8d8-4eec-b1ec-918ac2819024">
+                <div class="props">
+                    <div data-binding="name">ProductB</div>
+                    <div data-binding="type">medium</div>
+                    <div data-binding="date">2020-02-06T13:10:01.535</div>
+                </div>
+                <div class="details">
+                    <div class="head">
+                        <div onclick="sort('message')">Message</div>
+                    </div>
+                    <div class="body">
+                                                <div data-id="aed226e7-9ad5-49e2-8927-b300eb311838">foo</div>
+                                                <div data-id="69772c5c-f486-47fe-8bbd-90e8a3b81dab">foo</div>
+                                                <div data-id="e4b03bbc-845c-475c-a1ba-8412a1eca240">foo</div>
+                                            </div>
+                </div>
+            </div>
+                    <div class="product" data-id="4d80aae7-3be0-45e1-8066-540336c7b31a">
+                <div class="props">
+                    <div data-binding="name">ProductC</div>
+                    <div data-binding="type">small</div>
+                    <div data-binding="date">2020-02-13T13:10:01.535</div>
+                </div>
+                <div class="details">
+                    <div class="head">
+                        <div onclick="sort('message')">Message</div>
+                    </div>
+                    <div class="body">
+                                                <div data-id="c7ad30cb-f610-4af2-9ecb-959c430d9a5b">foo</div>
+                                                <div data-id="7ee40dd0-0382-49f3-a784-dab837375e50">foo</div>
+                                                <div data-id="54fceb37-e150-4d7d-8df7-883d12d6e346">foo</div>
+                                            </div>
+                </div>
+            </div>
+            </div>
+</div>
+
+</body>
+</html>

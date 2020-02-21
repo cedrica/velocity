@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report</title>
+
+    <script>
+        var products = $productsJson;
+
+        function sort(column) {
+            products.sort((a, b) => {
+                return a[column].localeCompare(b[column]);
+            });
+        }
+    </script>
+    <style>
+        .report {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .head {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .props {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+<h1>Report Type: $type</h1>
+<pre>$productsJson</pre>
+
+<div class="report">
+    <div class="head">
+        <div onclick="sort('name')">Name</div>
+        <div onclick="sort('type')">Type</div>
+        <div onclick="sort('date')">Date</div>
+    </div>
+    <div class="body">
+        #foreach( $product in $products )
+            <div class="product" data-id="$product.getId()">
+                <div class="props">
+                    <div data-binding="name">$product.getName()</div>
+                    <div data-binding="type">$product.getType()</div>
+                    <div data-binding="date">$product.getDate()</div>
+                </div>
+                <div class="details">
+                    <div class="head">
+                        <div onclick="sort('message')">Message</div>
+                    </div>
+                    <div class="body">
+                        #foreach( $element in $product.getElements() )
+                        <div data-id="$element.getId()">$element.getMessage()</div>
+                        #end
+                    </div>
+                </div>
+            </div>
+        #end
+    </div>
+</div>
+
+</body>
+</html>
